@@ -7,6 +7,9 @@ width = 1600
 length = 1200
 MAXITER = rint(280, 520)
 
+rand_elem = rint(91, 99) * 0.01
+print rand_elem
+
 img = [[0, 0, 0] * width for row in xrange(length)]
 palette = []
 
@@ -32,7 +35,7 @@ def compute_val(x, y):
     z1 = z0 * z0 + c
 
     while (iters < MAXITER and (z0.real * z0.real + z0.imag * z0.imag <= 2)):
-        z2 = z1 * z1 * z1 + z0 + c
+        z2 = z1 * z1 * z1 + rand_elem * z0 + c
         z0 = z1
         z1 = z2
 
