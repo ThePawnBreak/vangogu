@@ -36,21 +36,11 @@ def compute_val(x, y):
     z1 = z0 * z0 + c
     z1 = 0
 
-    # while (iters < MAXITER and (rx * rx + ry * ry <= 2)):
     while (iters < MAXITER and (z0.real * z0.real + z0.imag * z0.imag <= 2)):
-        # rx = a * a - b * b + x0
-        # ry = 2 * a * b + y0
-        # a = rx
-        # b = ry
         z2 = z1 * z1 * z1 + z0 + c
         z0 = z1
         z1 = z2
-        
 
-        # z1 = z0 * z0 * z0 + c
-        # z0 = z1
-
-        
         iters += 1
 
 
@@ -87,7 +77,6 @@ def gen_palette(colorNr = 2):
 def main():
     f = open('fractal.png', 'wb')
     w = png.Writer(width, length)
-    # w = png.Writer(800, 600)
 
     gen_palette(5)
     gen_image()
