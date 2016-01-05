@@ -19,22 +19,17 @@ def gen_image():
             img[y][x * 3 + 2] = b
 
 def compute_val(x, y):
-    a, b, rx, ry = 0, 0, 0, 0
-
     offsetx = -width/2;
     offsety = -length/2;
-    panx = -100;
-    pany = 0;
-    zoom = 3000;
-    x0 = (x + offsetx + panx) / zoom;
-    y0 = (y + offsety + pany) / zoom;
+    zoom = 3000
+    x0 = (x + offsetx) / zoom;
+    y0 = (y + offsety) / zoom;
 
     iters = 0
 
     c = x0 + 1j * y0
     z0 = c
     z1 = z0 * z0 + c
-    z1 = 0
 
     while (iters < MAXITER and (z0.real * z0.real + z0.imag * z0.imag <= 2)):
         z2 = z1 * z1 * z1 + z0 + c
@@ -55,6 +50,8 @@ def floorToMax(nr, maxNr):
     rez = int(nr)
     if rez > maxNr:
         rez = maxNr
+    if rez < 0:
+        rez = 0
     return rez
 
 def gen_palette(colorNr = 2):
